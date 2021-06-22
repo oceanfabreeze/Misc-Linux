@@ -14,4 +14,4 @@ chmod +x /etc/cron.daily/zabbixmysqlcheck
 vi /etc/cron.daily/zabbixmysqlcheck
 ```
 ## zabbix_cleanup.sql
-Created this to cleanup history data from the Zabbix servers and proxies. One of the many flaws of Zabbix is that the housekeeper service sucks. It can only delete so much before it gives up and times out. This SQL will go out and make sure that the retention policy you set is properly followed. Default is 90 day drilled down history, 1 year trends history. Test
+Created this to cleanup history data from the Zabbix servers and proxies. One of the many flaws of Zabbix is that the housekeeper service sucks. It can only delete so much before it gives up and times out. This SQL will go out and make sure that the retention policy you set is properly followed. Default is 90 day drilled down history, 1 year trends history.
