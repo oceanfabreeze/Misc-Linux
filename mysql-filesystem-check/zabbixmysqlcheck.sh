@@ -2,7 +2,8 @@
 # Shell script to check filesystem /var/lib/mysql usage on zabbix servers and proxies
 # It will send an email to the ZABBIXADMIN, if the (free available) percentage of space is >= $ALERT
 #author=Thomas A. Fabrizio (TF054451)
-#verison=1.3
+#verison=1.3 Gold
+#changelog= Ready to put on Unified Zabbix boxes.
 # -------------------------------------------------------------------------
 #set email for zabbix admin
 ZABBIXADMIN="thomas.fabrizio@cerner.com"
