@@ -47,7 +47,7 @@ function print_test(){
 do
    echo "Printing test page to : $line"
    lhost=$(hostname)
-   lpr -P $line <<< "LEAVE IN TRAY FOR ITSYSMGR. THIS IS A TEST PAGE. Printed to $line from $lhost"
+   lpr -P $line <<< "LEAVE IN TRAY FOR ITSYSMGR. TEST PAGE. Printed to $line from $lhost"
 done < unionprinters.csv
 pause
 }
@@ -55,7 +55,7 @@ pause
 function print_test_specific(){
 read -p "Enter the printername " printerselection
 lhost=$(hostname)
-lpr -P $printerselection <<< "LEAVE IN TRAY FOR ITSYSMGR. THIS IS A TEST PAGE. Printed to $printerselection from $lhost"
+lpr -P $printerselection <<< "LEAVE IN TRAY FOR ITSYSMGR. TEST PAGE. Printed to $printerselection from $lhost"
 echo "Printed to $printerselection from $lhost"
 pause
 }
