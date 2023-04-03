@@ -61,7 +61,11 @@ read -p "Enter queue name " queue
 file=/cerner/d_p0182/print/printfile.log.$date
 echo "Printing from $file for $queue"
 cat $file|grep $queue'\s\-t'| cut -b 3-4,19-31,35-147|sed 's/-]//g' > reprint.csv
-echo "Check file"
+while read line
+do
+$line
+echo $line
+done < reprint.csv
 pause
 }
 
