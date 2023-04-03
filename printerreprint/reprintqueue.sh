@@ -4,8 +4,7 @@
 #verison=1.0
 #Changelog= 
 # -------------------------------------------------------------------------
-#Re-print all jobs from a specific printer on node. 
-#cat printfile.log.0402|grep 'lz79\s\-t'| cut -b 3-4,19-31,35-147|sed 's/-]//g'
+#Re-print all jobs from a specific printer on node or all printers. 
 
 
 # Purpose - Display the main menu.
@@ -20,7 +19,7 @@ echo "---------------------------"
 echo "---------------------------"
 echo " Main Menu"
 echo "---------------------------"
-echo "1. Reprint all queues from this node"
+echo "1. Reprint all queues from this node (ONLY FOR EMERGENCY)"
 echo "2. Reprint specific printer."
 echo "3. Exit"
 }
@@ -46,12 +45,14 @@ esac
 }
 
 function print_all(){
+read -p "Enter the date in mmdd format " date
+file=/cerner/d_p0182/print/printfile.log.$date
+cat $file|grep '\s\-t\s/cerner/d_p0182'| cut -b 3-4,19-31,35-150|sed 's/-]//g' > reprint.csv
     while read line
 do
-   echo "Printing test page to : $line"
-   lhost=$(hostname)
-   lpr -P $line <<< "LEAVE IN TRAY FOR ITSYSMGR. TEST PAGE. Printed to $line from $lhost"
-done < unionprinters.csv
+$line
+echo $line
+done < reprint.csv
 pause
 }
 
@@ -60,7 +61,7 @@ read -p "Enter the date in mmdd format " date
 read -p "Enter queue name " queue
 file=/cerner/d_p0182/print/printfile.log.$date
 echo "Printing from $file for $queue"
-cat $file|grep $queue'\s\-t'| cut -b 3-4,19-31,35-147|sed 's/-]//g' > reprint.csv
+cat $file|grep $queue'\s\-t\s/cerner/d_p0182'| cut -b 3-4,19-31,35-150|sed 's/-]//g' > reprint.csv
 while read line
 do
 $line
