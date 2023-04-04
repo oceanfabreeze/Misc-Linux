@@ -1,8 +1,9 @@
 #!/bin/bash
 # -------------------------------------------------------------------------
 #author=Thomas A. Fabrizio (801210714)
-#verison=1.0
+#verison=1.1
 #Changelog= 
+#4/4/2023: Added Warning Screen to first value. 
 # -------------------------------------------------------------------------
 #Re-print all jobs from a specific printer on node or all printers. 
 
@@ -13,7 +14,7 @@ function show_menu(){ #main menu function
 date
 echo "---------------------------"
 echo " Reprint Queue Script"
-echo " Version = 1.0"
+echo " Version = 1.1"
 echo " Author = Thomas A. Fabrizio (801210714)"
 echo "---------------------------"
 echo "---------------------------"
@@ -45,6 +46,22 @@ esac
 }
 
 function print_all(){
+textreset=$(tput sgr0) # reset the foreground colour
+red=$(tput setaf 1)
+echo "---------------------------"
+echo "---------------------------"
+tput smul; echo "${red} WARNING! ${textreset}";
+tput smul; echo "${red} WARNING! ${textreset}";
+tput smul; echo "${red} WARNING! ${textreset}";
+tput smul; echo "${red} WARNING! ${textreset}";
+tput smul; echo "${red} WARNING! This will reprint all jobs on this node!! Are you sure you want to do this? ${textreset}";
+echo "---------------------------"
+echo "---------------------------"
+echo ""
+echo ""
+echo ""
+echo ""
+pause
 read -p "Enter the date in mmdd format " date
 file=/cerner/d_p0182/print/printfile.log.$date
 cat $file|grep '\s\-t\s/cerner/d_p0182'| cut -b 3-4,19-31,35-150|sed 's/-]//g' > reprint.csv
