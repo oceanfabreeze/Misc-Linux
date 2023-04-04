@@ -14,7 +14,7 @@ function show_menu(){ #main menu function
 date
 echo "---------------------------"
 echo " Reprint Queue Script"
-echo " Version = 1.0"
+echo " Version = 1.1"
 echo " Author = Thomas A. Fabrizio (801210714)"
 echo "---------------------------"
 echo "---------------------------"
