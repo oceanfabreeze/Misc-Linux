@@ -1,8 +1,9 @@
 #!/bin/bash
 # -------------------------------------------------------------------------
 #author=Thomas A. Fabrizio (801210714)
-#verison=1.0
+#verison=1.1
 #Changelog= 
+#4/4/2023: Added Warning Screen to first value. 
 # -------------------------------------------------------------------------
 #Re-print all jobs from a specific printer on node or all printers. 
 
@@ -47,11 +48,15 @@ esac
 function print_all(){
 textreset=$(tput sgr0) # reset the foreground colour
 red=$(tput setaf 1)
+echo "---------------------------"
+echo "---------------------------"
 tput smul; echo "${red} WARNING! ${textreset}";
 tput smul; echo "${red} WARNING! ${textreset}";
 tput smul; echo "${red} WARNING! ${textreset}";
 tput smul; echo "${red} WARNING! ${textreset}";
 tput smul; echo "${red} WARNING! This will reprint all jobs on this node!! Are you sure you want to do this? ${textreset}";
+echo "---------------------------"
+echo "---------------------------"
 echo ""
 echo ""
 echo ""
