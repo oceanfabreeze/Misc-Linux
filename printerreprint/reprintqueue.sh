@@ -45,6 +45,10 @@ esac
 }
 
 function print_all(){
+textreset=$(tput sgr0) # reset the foreground colour
+red=$(tput setaf 1)
+yellow=$(tput setaf 2) 
+echo "Output a ${yellow} coloured ${textreset} ${red} word ${textreset}."
 read -p "Enter the date in mmdd format " date
 file=/cerner/d_p0182/print/printfile.log.$date
 cat $file|grep '\s\-t\s/cerner/d_p0182'| cut -b 3-4,19-31,35-150|sed 's/-]//g' > reprint.csv
