@@ -1,9 +1,10 @@
 #!/bin/bash
 # -------------------------------------------------------------------------
 #author=Thomas A. Fabrizio (801210714)
-#verison=1.1
+#verison=1.2
 #Changelog= 
 #4/4/2023: Added Warning Screen to first value. 
+#4/6/2023: Fixed bug where if printing user was not SYSTEM, command would error out do to extra characters. 
 # -------------------------------------------------------------------------
 #Re-print all jobs from a specific printer on node or all printers. 
 
@@ -14,7 +15,7 @@ function show_menu(){ #main menu function
 date
 echo "---------------------------"
 echo " Reprint Queue Script"
-echo " Version = 1.1"
+echo " Version = 1.2
 echo " Author = Thomas A. Fabrizio (801210714)"
 echo "---------------------------"
 echo "---------------------------"
@@ -64,7 +65,7 @@ echo ""
 pause
 read -p "Enter the date in mmdd format " date
 file=/cerner/d_p0182/print/printfile.log.$date
-cat $file|grep '\s\-t\s/cerner/d_p0182'| cut -b 3-4,19-31,35-150|sed 's/-]//g' > reprint.csv
+cat $file|grep '\s\-t\s/cerner/d_p0182/print/'|cut -b 3-5,9-31,31-150|sed 's/-]//g'|sed 's/-U".*"//g' > reprint.csv
     while read line
 do
 $line
@@ -78,7 +79,7 @@ read -p "Enter the date in mmdd format " date
 read -p "Enter queue name " queue
 file=/cerner/d_p0182/print/printfile.log.$date
 echo "Printing from $file for $queue"
-cat $file|grep $queue'\s\-t\s/cerner/d_p0182'| cut -b 3-4,19-31,35-150|sed 's/-]//g' > reprint.csv
+cat $file|grep $queue'\s\-t\s/cerner/d_p0182/print/'|cut -b 3-5,9-31,31-150|sed 's/-]//g'|sed 's/-U".*"//g' > reprint.csv
 while read line
 do
 $line
