@@ -7,7 +7,7 @@
 # Script to check if openvpn is running. If not, start it. 
 # ----------------------------------------------------------------------------------
 
-$DATE = date;
+$DATE = date
 
 if pgrep openvpn;
     then
