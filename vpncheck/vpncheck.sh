@@ -7,12 +7,12 @@
 # Script to check if openvpn is running. If not, start it. 
 # ----------------------------------------------------------------------------------
 
-$DATE = date
+$DATE=$(date)
 
 if pgrep openvpn;
     then
-        printf "\n$DATE VPN IS RUNNING!" >> vpn.log
+        printf "\n($DATE) VPN IS RUNNING!" >> vpn.log
 else
-    printf "\n$DATE VPN IS NOT RUNNING. STARTING." >> vpn.log
+    printf "\n($DATE) VPN IS NOT RUNNING. STARTING." >> vpn.log
     service openvpn-client@vpn start
 fi
