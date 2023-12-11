@@ -4,7 +4,7 @@
 #verison=1.2
 #Changelog= 
 #4/4/2023: Added Warning Screen to first value. 
-#4/6/2023: Fixed bug where if printing user was not SYSTEM, command would error out do to extra characters. 
+#4/6/2023: Fixed bug where if printing user was not SYSTEM, command would error out due to extra characters. 
 # -------------------------------------------------------------------------
 #Re-print all jobs from a specific printer on node or all printers. 
 
